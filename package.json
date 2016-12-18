@@ -1,0 +1,15 @@
+{
+  "name": "guardian",
+  "version": "0.0.1",
+  "description": "Home monitoring tools for raspberry pi",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "author": "David Dahl",
+  "license": "MIT",
+  "dependencies": {
+    "onoff": "^1.1.1",
+    "pi-gpio": "0.0.8"
+  }
+}
