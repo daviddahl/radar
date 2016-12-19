@@ -11,6 +11,7 @@
   "dependencies": {
     "onoff": "^1.1.1",
     "raspicam": "^0.2.13",
-    "twilio": "^2.11.1"
+    "twilio": "^2.11.1",
+    "uuid": "^3.0.1"
   }
 }
