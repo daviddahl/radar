@@ -9,8 +9,10 @@
   "author": "David Dahl",
   "license": "MIT",
   "dependencies": {
+    "express": "^4.14.0",
     "onoff": "^1.1.1",
     "raspicam": "^0.2.13",
+    "redis": "^2.6.3",
     "twilio": "^2.11.1",
     "uuid": "^3.0.1"
   }

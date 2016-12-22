@@ -4,11 +4,9 @@ let Gpio = require('onoff').Gpio,
     https = require('https'),
     FROM_PHONE_NUMBER = process.env.RADAR_TWILIO_FROM_PHONE_NUMBER,
     TO_PHONE_NUMBER = process.env.RADAR_TWILIO_TO_PHONE_NUMBER,
-    // Twilio Credentials
     accountSid = process.env.RADAR_TWILIO_ACCOUNTSID,
     authToken = process.env.RADAR_TWILIO_AUTHTOKEN,
-    mediaUrl = process.env.RADAR_MEDIA_URL,
-    //require the Twilio module and create a REST client
+    mediaUrl = `${process.env.RADAR_HTTP_PROTO}${process.env.RADAR_HTTP_HOST}/`,
     client = require('twilio')(accountSid, authToken),
     uuidV4 = require('uuid/v4');
 
@@ -17,7 +15,7 @@ function motionWatcher (err, value) {
 
     if (err) {
         console.error(err);
-        // SEND SMS
+        // SEND Err SMS
         notifyFault(err);
         throw err;
     }
@@ -56,12 +54,11 @@ function motionWatcher (err, value) {
 }
 
 function notify (fileName) {
-    debugger;
     client.messages.post({
         to: TO_PHONE_NUMBER,
         from: FROM_PHONE_NUMBER,
         body: `Motion detected @ ${new Date()}\n${mediaUrl}${fileName}`,
-        // mediaUrl: `${mediaUrl}${fileName}`
+        // mediaUrl: `${mediaUrl}${fileName}` // MMS, but expensive
     }, function (err, message) {
         if (err) {
             return console.error('Cannot send SMS', err);
