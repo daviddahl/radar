@@ -1,3 +1,7 @@
+///////////////////////////////////////////////
+// ORIGINAL POC. DO NOT USE, WILL BE DELETED //
+///////////////////////////////////////////////
+
 let Gpio = require('onoff').Gpio,
     RaspiCam = require('raspicam'),
     pir = new Gpio(4, 'in', 'both'),

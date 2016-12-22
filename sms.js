@@ -13,7 +13,6 @@ let redis = {
 redis.client.on('message', function (channel, message) {
     console.log('SMS: client channel ' + channel + ': ' + message);
     notify(message);
-    // redis.client.set('motion-channel-sms-sent', `${channel} ${message}`);
 });
 
 redis.client.on('ready', function () {
