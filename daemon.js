@@ -7,4 +7,9 @@ child_process.fork('./camera.js');
 console.log('Starting sms daemon...');
 child_process.fork('./sms.js');
 
-console.log('processes running (I hope)');
+console.log('Radar processes running.');
+
+process.on("uncaughtException", function errorHandler (err) {
+    console.error('Uncaught Exception: ', err);
+    // this.emit("error:cleanup");
+});

@@ -2,7 +2,7 @@ let FROM_PHONE_NUMBER = process.env.RADAR_TWILIO_FROM_PHONE_NUMBER,
     TO_PHONE_NUMBER = process.env.RADAR_TWILIO_TO_PHONE_NUMBER,
     accountSid = process.env.RADAR_TWILIO_ACCOUNTSID,
     authToken = process.env.RADAR_TWILIO_AUTHTOKEN,
-    mediaUrl = `${process.env.RADAR_HTTP_PROTO}${process.env.RADAR_HTTP_HOST}/pi-photos/image-`,
+    mediaUrl = `${process.env.RADAR_HTTP_PROTO}${process.env.RADAR_HTTP_HOST}/${process.env.RADAR_IMAGE_PUBLIC_PATH}/image-`,
     _twilio = require('twilio')(accountSid, authToken),
     _redis = require('redis');
 

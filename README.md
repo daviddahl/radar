@@ -11,8 +11,11 @@
 
 ## TODO
 
-* Web app to take pictures as needed, arm, disarm, 'smart arm' & disarm via identity detection via MAC address
+* Web app to take pictures as needed
+* arm, disarm
+* 'smart arm' & disarm via identity detection via MAC address
 * Remote storage / sync to CouchDB / Dropbox, etc
+* View logging
 
 ### Requirements:
 
