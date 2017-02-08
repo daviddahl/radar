@@ -13,6 +13,7 @@ let redis = {
 };
 
 function motionWatcher (err, value) {
+    // debugger;
     if (!value) {
         return console.info('PIR reset');
     }

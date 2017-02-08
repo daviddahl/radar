@@ -13,11 +13,10 @@ redis.client.on('ready', function () {
 
 redis.client.on('message', function (channel, message) {
     console.log('CAMERA: client channel ' + channel + ': ' + message);
-    message = ' ' + message;
     // take a picture if more than 3 seconds has gone by, then back off
     let uuid = message.split('|')[3];
     
-    Camera({uuid: uuid}, function (err, filename) {
+    Camera({uuid: uuid, w: 1920, h: 1080}, function (err, filename) {
         if (err) {
             return redis.client.set('error', err, _redis.print);
         }
@@ -64,6 +63,10 @@ function Camera (config, callback) {
 	}
         console.log("photo image captured with filename: " + filename);
 	fileName = filename;
+    });
+
+    camera.on("stop", function () {
+	console.log('Camera stop event');
     });
     
     camera.on("exit", function(timestamp) {
