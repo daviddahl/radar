@@ -10,10 +10,13 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.14.0",
+    "node-fetch": "^1.6.3",
     "onoff": "^1.1.1",
     "raspicam": "^0.2.13",
     "redis": "^2.6.3",
     "twilio": "^2.11.1",
-    "uuid": "^3.0.1"
+    "uuid": "^3.0.1",
+    "watson-developer-cloud": "^2.17.1",
+    "wemo": "^0.2.1"
   }
 }
