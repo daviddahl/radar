@@ -3,18 +3,32 @@ let Gpio = require('onoff').Gpio,
     uuidV4 = require('uuid/v4'),
     _redis = require('redis'),
     RADAR_MOTION_LOCATION = process.env.RADAR_MOTION_LOCATION,
-    getLightSwitch = require('./wemo');;
+    getLightSwitch = require('./wemo'),
+    systemStatus = 1;
 
 
 let redis = {
     client: _redis.createClient(),
     recordMotion: function recordMotion (motionRecord) {
         this.client.publish('motion-channel', motionRecord);
+    },
+    checkStatus: function checkStatus () {
+	this.client.get('system-status', function (err, reply) {
+	    if (err) {
+		return console.error(err);
+	    }
+	    if (!isNaN(parseInt(reply))) {
+		systemStatus = parseInt(reply);
+	    }
+	});
     }
 };
 
 function motionWatcher (err, value) {
-    // debugger;
+    redis.checkStatus(); // XXX: add the motionWatcher code into the checkStatus callback
+    if (!checkStatus) {
+	return;
+    }
     if (!value) {
         return console.info('PIR reset');
     }
@@ -29,6 +43,7 @@ function motionWatcher (err, value) {
 }
 
 pir.watch(motionWatcher);
+redis.checkStatus();
 
 process.on('SIGINT', function () {
     pir.unexport();
