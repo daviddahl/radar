@@ -10,6 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.14.0",
+    "moment-timezone": "^0.5.11",
     "node-fetch": "^1.6.3",
     "onoff": "^1.1.1",
     "raspicam": "^0.2.13",
